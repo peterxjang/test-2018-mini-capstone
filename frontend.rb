@@ -18,9 +18,12 @@ require "unirest"
 # product = response.body
 # puts JSON.pretty_generate(product)
 
-params = {
-  name: "Updated name"
-}
-response = Unirest.patch("http://localhost:3000/api/products/5", parameters: params)
-product = response.body
-puts JSON.pretty_generate(product)
+# params = {
+#   name: "Updated name"
+# }
+# response = Unirest.patch("http://localhost:3000/api/products/5", parameters: params)
+# product = response.body
+# puts JSON.pretty_generate(product)
+
+response = Unirest.delete("http://localhost:3000/api/products/6")
+puts JSON.pretty_generate(response.body)
