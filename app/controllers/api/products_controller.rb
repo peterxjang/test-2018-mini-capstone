@@ -1,7 +1,7 @@
 class Api::ProductsController < ApplicationController
-  def all_products_method
+  def index
     @products = Product.all
-    render "all_products.json.jbuilder"
+    render "index.json.jbuilder"
   end
 
   def one_product_method
