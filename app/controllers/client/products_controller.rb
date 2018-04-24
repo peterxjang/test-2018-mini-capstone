@@ -10,13 +10,7 @@ class Client::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(
-      name: params[:name],
-      price: params[:price],
-      image_url: params[:image_url],
-      description: params[:description]
-    )
-    @product.save
+    response = Unirest.post("http://localhost:3000/api/products", parameters: params.permit(params.keys).to_h)
     render "create.html.erb"
   end
 
