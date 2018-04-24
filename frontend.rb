@@ -8,12 +8,19 @@ require "unirest"
 # product = response.body
 # puts JSON.pretty_generate(product)
 
+# params = {
+#   name: "Test name",
+#   price: 3,
+#   image_url: "https://c1.staticflickr.com/6/5337/8940995208_5da979c52f.jpg",
+#   description: "Test description"
+# }
+# response = Unirest.post("http://localhost:3000/api/products", parameters: params)
+# product = response.body
+# puts JSON.pretty_generate(product)
+
 params = {
-  name: "Test name",
-  price: 3,
-  image_url: "https://c1.staticflickr.com/6/5337/8940995208_5da979c52f.jpg",
-  description: "Test description"
+  name: "Updated name"
 }
-response = Unirest.post("http://localhost:3000/api/products", parameters: params)
+response = Unirest.patch("http://localhost:3000/api/products/5", parameters: params)
 product = response.body
 puts JSON.pretty_generate(product)
