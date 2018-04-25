@@ -11,7 +11,9 @@ class Client::ProductsController < ApplicationController
 
   def create
     response = Unirest.post("http://localhost:3000/api/products", parameters: params.permit(params.keys).to_h)
-    render "create.html.erb"
+    product = response.body
+    flash[:success] = "Recipe successfully created!"
+    redirect_to "/client/products/#{product['id']}"
   end
 
   def show
@@ -28,8 +30,8 @@ class Client::ProductsController < ApplicationController
 
   def update
     response = Unirest.patch("http://localhost:3000/api/products/#{params[:id]}", parameters: params.permit(params.keys).to_h)
-    @product = response.body
-    render "update.html.erb"
+    flash[:success] = "Recipe successfully updated!"
+    redirect_to "/client/products/#{params[:id]}"
   end
 
   def destroy
