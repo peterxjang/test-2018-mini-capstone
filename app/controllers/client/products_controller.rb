@@ -6,18 +6,20 @@ class Client::ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = {}
     render "new.html.erb"    
   end
 
   def create
     response = Unirest.post("http://localhost:3000/api/products", parameters: params.permit(params.keys).to_h)
-    @product = response.body
-    if @product["errors"]
-      render "new.html.erb"
-    else
+    if response.code == 200
+      @product = response.body
       flash[:success] = "Recipe successfully created!"
       redirect_to "/client/products/#{product['id']}"
+    else
+      @product = params
+      @product["errors"] = response.body["errors"]
+      render "new.html.erb"
     end
   end
 
