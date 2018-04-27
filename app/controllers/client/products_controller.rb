@@ -15,7 +15,7 @@ class Client::ProductsController < ApplicationController
     if response.code == 200
       @product = response.body
       flash[:success] = "Recipe successfully created!"
-      redirect_to "/client/products/#{product['id']}"
+      redirect_to "/client/products/#{@product['id']}"
     else
       @product = params
       @product["errors"] = response.body["errors"]
