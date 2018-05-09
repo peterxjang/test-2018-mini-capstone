@@ -25,10 +25,15 @@ class Api::ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: 1
     )
     if @product.save
+      image = Image.new(
+        product_id: @product.id,
+        url: params[:image_url]
+      )
+      image.save
       render "show.json.jbuilder"
     else
       render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
