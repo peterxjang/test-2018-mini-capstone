@@ -1,6 +1,6 @@
 <% @products.each do |product| %>
   <h2><%= product["name"] %></h2>
-  <img src="<%= product["image_url"] %>" alt="" width=100>
+  <img src="<%= product["images"][0]["url"] %>" alt="" width=100>
   <h3><%= product["price"] %></h3>
   <% if product["is_discounted"] %>
     <p>Discount item!!!</p>
