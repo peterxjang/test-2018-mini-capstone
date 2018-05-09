@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'user_token' => 'user_token#create'
   namespace :api do
     post "/users" => "users#create"
 
@@ -20,5 +21,9 @@ Rails.application.routes.draw do
 
     get "/signup" => "users#new"
     post "/users" => "users#create"
+
+    get "/login" => "sessions#new"
+    post "/login" => "sessions#create"
+    get "/logout" => "sessions#destroy"
   end
 end
