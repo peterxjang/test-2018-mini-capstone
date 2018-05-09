@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     post "/products" => "products#create"
     patch "/products/:id" => "products#update"
     delete "/products/:id" => "products#destroy"
+
+    get "/orders" => "orders#index"
+    post "/orders" => "orders#create"
   end
 
   namespace :client do
@@ -18,6 +21,9 @@ Rails.application.routes.draw do
     get '/products/:id/edit' => 'products#edit'
     patch '/products/:id' => 'products#update'
     delete '/products/:id' => 'products#destroy'
+
+    get "/orders" => "orders#index"
+    post "/orders" => "orders#create"
 
     get "/signup" => "users#new"
     post "/users" => "users#create"

@@ -1,0 +1,9 @@
+<h1>Orders</h1>
+<% @orders.each do |order| %>
+  <h2><%= order["product"]["name"] %></h2>
+  <p>Price: <%= order["product"]["price"] %></p>
+  <p>Quantity: <%= order["quantity"] %></p>
+  <p>subtotal: <%= order["subtotal"] %></p>
+  <p>tax: <%= order["tax"] %></p>
+  <p>total: <%= order["total"] %></p>
+<% end %>
