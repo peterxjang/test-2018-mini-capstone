@@ -15,6 +15,8 @@ class Client::SessionsController < ApplicationController
     )
     if response.code == 201
       jwt = response.body["jwt"]
+      session[:jwt] = jwt
+      session[:admin] = response.body["user"]["admin"]
       Unirest.default_header("Authorization", "Bearer #{jwt}")
       redirect_to "/"
     else
@@ -24,6 +26,8 @@ class Client::SessionsController < ApplicationController
 
   def destroy
     jwt = ""
+    session[:jwt] = nil
+    session[:admin] = nil
     Unirest.clear_default_headers()
     redirect_to '/client/login'
   end

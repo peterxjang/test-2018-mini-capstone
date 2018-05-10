@@ -4,7 +4,7 @@ class UserTokenController < Knock::AuthTokenController
     user = User.find_by(email: email)
     body = {
       jwt: auth_token.token,
-      user: { id: user.id, name: user.name, email: user.email }
+      user: { id: user.id, name: user.name, email: user.email, admin: user.admin }
     }
     render json: body, status: :created
   end

@@ -12,6 +12,19 @@
     <% flash.each do |name, message| %>
       <p> <%= message %> </p>
     <% end %> 
+    
+    <nav>
+      <a href="/client/products">All products</a>
+      <% if session[:admin] %>
+        <a href="/client/products/new">New product</a>
+      <% end %>
+      <% if session[:jwt] %>
+        <a href="/client/logout">Logout</a>
+      <% else %>
+        <a href="/client/signup">Signup</a>
+        <a href="/client/login">Login</a>
+      <% end %>
+    </nav>
 
     <%= yield %>
   </body>
