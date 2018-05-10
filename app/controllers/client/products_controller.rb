@@ -12,6 +12,9 @@ class Client::ProductsController < ApplicationController
 
   def create
     response = Unirest.post("http://localhost:3000/api/products", parameters: params.permit(params.keys).to_h)
+    puts "-" * 50
+    pp response
+    puts "-" * 50
     if response.code == 200
       @product = response.body
       flash[:success] = "Recipe successfully created!"

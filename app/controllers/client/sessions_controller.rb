@@ -25,6 +25,6 @@ class Client::SessionsController < ApplicationController
   def destroy
     jwt = ""
     Unirest.clear_default_headers()
-    redirect_to '/login'
+    redirect_to '/client/login'
   end
 end
